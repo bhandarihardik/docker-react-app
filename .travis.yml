@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t bhandarihardik/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true bhandarihardik/docker-react-app npm run test
